@@ -1,0 +1,37 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class SwingLayoutDemo {
+    public static void main(String[] args) {
+        // 1. Create the main window frame (Uses BorderLayout by default)
+        JFrame frame = new JFrame("Java Swing Layout Demo");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(500, 400);
+        frame.setLayout(new BorderLayout(10, 10)); // Horizontal and vertical gaps
+
+        // 2. FlowLayout Panel (Arranges components in a line, wraps if tight)
+        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        topPanel.add(new JButton("File"));
+        topPanel.add(new JButton("Edit"));
+        topPanel.add(new JButton("Help"));
+
+        // 3. GridLayout Panel (Equal-sized grid cells: 2 rows, 2 columns)
+        JPanel centerPanel = new JPanel(new GridLayout(2, 2, 5, 5));
+        centerPanel.add(new JButton("Button 1"));
+        centerPanel.add(new JButton("Button 2"));
+        centerPanel.add(new JButton("Button 3"));
+        centerPanel.add(new JButton("Button 4"));
+
+        // 4. A single standalone component
+        JLabel statusLabel = new JLabel("Status: Ready", SwingConstants.CENTER);
+        statusLabel.setBorder(BorderFactory.createEtchedBorder());
+
+        // 5. Add panels to the main BorderLayout frame
+        frame.add(topPanel, BorderLayout.NORTH);
+        frame.add(centerPanel, BorderLayout.CENTER);
+        frame.add(statusLabel, BorderLayout.SOUTH);
+
+        // Display the frame
+        frame.setVisible(true);
+    }
+}
